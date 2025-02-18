@@ -1,0 +1,14 @@
+name: Push PR Merge Data to Google Sheets
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+    types:
+      - closed
+
+jobs:
+  pr_merge_override_check:
+    uses: "porterin/dpq-workflows/.github/workflows/pr-merge-override-check.yml@main"
+    secrets: inherit
