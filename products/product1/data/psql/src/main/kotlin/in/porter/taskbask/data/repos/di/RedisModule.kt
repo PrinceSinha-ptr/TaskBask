@@ -11,7 +11,7 @@ object RedisModule {
 
     @Provides
     fun provideJedisPool(): JedisPool {
-        return JedisPool("localhost", 6379)
+        return JedisPool(System.getenv("REDIS_HOST"), System.getenv("REDIS_PORT").toInt())
     }
 
     @Provides
