@@ -6,7 +6,7 @@ plugins {
 }
 
 dependencies {
-  api(project(Modules.KPTR.Api.models))
+  api(project(Modules.TASKBASK.Api.models))
   implementation(Libs.KotlinUtils.serdeJackson)
   implementation(Libs.KotlinUtils.awsSqs)
 
@@ -24,7 +24,7 @@ val sourceJar = task("sourceJar", Jar::class) {
 publishing {
   publications {
     create<MavenPublication>(name) {
-      artifactId = "kptr-client"
+      artifactId = "taskbask-client"
 
       from(components["java"])
       artifact(sourceJar)

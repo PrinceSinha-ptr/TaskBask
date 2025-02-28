@@ -1,9 +1,12 @@
 plugins {
   id(Plugins.mavenPublish)
+    kotlin("plugin.serialization") version "1.9.0" // Use your Kotlin version
+
 }
 
 dependencies {
   implementation(Libs.KotlinUtils.serdeJackson)
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 }
 
 val sourceJar = task("sourceJar", Jar::class) {
