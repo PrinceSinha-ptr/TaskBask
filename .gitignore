@@ -181,7 +181,7 @@ Sessionx.vim
 [._]*.un~
 
 ### Gradle ###
-.gradle
+.gradle/
 build/
 !gradle.properties
 
