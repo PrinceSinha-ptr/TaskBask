@@ -37,7 +37,7 @@ allprojects {
 }
 
 subprojects {
-  group = "in.porter.kptr"
+  group = "in.porter.taskbask"
   version = "0.1.0"
 
   apply(plugin = Plugins.kotlinJvm)
@@ -46,6 +46,7 @@ subprojects {
   dependencies {
     "implementation"(Libs.KotlinUtils.commons)
     "testImplementation"(Libs.KotlinUtils.testing)
+
   }
 
   // Configure Jacoco for subprojects
@@ -69,3 +70,4 @@ subprojects {
 
   kotlinExtension.jvmToolchain(11)
 }
+

@@ -5,8 +5,8 @@ plugins {
 }
 
 dependencies {
-  implementation(project(Modules.KPTR.domain))
-  implementation(project(Modules.KPTR.Data.psql))
+  implementation(project(Modules.TASKBASK.domain))
+  implementation(project(Modules.TASKBASK.Data.psql))
 
   implementation(Libs.Log4j.core)
   implementation(Libs.Log4j.slf4jImpl)

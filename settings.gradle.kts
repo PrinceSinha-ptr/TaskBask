@@ -1,4 +1,4 @@
-rootProject.name = "kptr"
+rootProject.name = "taskbask"
 
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.7.0"
@@ -32,3 +32,12 @@ include(":client")
 project(":client").projectDir = File("servers/client")
 
 //includeBuild("../kotlin-utils")
+include("products:product1:api:service:src")
+findProject(":products:product1:api:service:src")?.name = "src"
+include("products:product1:api:service")
+findProject(":products:product1:api:service")?.name = "service"
+include("products:product1:api:service")
+findProject(":products:product1:api:service")?.name = "service"
+include("products:product1:api:services")
+findProject(":products:product1:api:services")?.name = "services"
+
