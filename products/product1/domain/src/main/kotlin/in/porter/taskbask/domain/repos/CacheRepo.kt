@@ -13,5 +13,7 @@ interface CacheRepo {
     fun deleteTask(request: DeleteTaskRequestDomain)
     fun updateTask(email: String , request : GetTaskResponse)
     fun getTask(request: GetTaskRequestDomain):List<GetTaskResponse>
+    fun cacheAllTask(email : String , request: List<GetTaskResponse>)
+    fun getSize(email: String):Int
 
 }

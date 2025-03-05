@@ -44,11 +44,17 @@ constructor( private val userCache: UserCache,
     }
     override fun getTask(request : GetTaskRequestDomain): List<GetTaskResponse>{
         if(request.title != ""){
-            val res = taskCache.getTask(request.email , request.title)
-            if(res.isEmpty()) throw TaskBaskException("No such task with title ${request.title} for user with email ${request.email}" , HttpStatusCode.NotFound)
-            return res
+            return taskCache.getTask(request.email , request.title)
         }
         return taskCache.getAllTasks(request.email)
+    }
+
+    override fun cacheAllTask(email : String , request: List<GetTaskResponse>){
+        taskCache.addList(request , email)
+    }
+
+    override fun getSize(email: String):Int{
+        return taskCache.getSize(email)
     }
 
 

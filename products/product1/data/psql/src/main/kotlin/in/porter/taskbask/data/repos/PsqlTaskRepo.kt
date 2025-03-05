@@ -22,7 +22,7 @@ constructor(
     }
 
     override suspend fun update(request : UpdateTaskRequestDomain) {
-        if(request.description != "") queries.updateDescription(request)
+        if(request.description != "" ) queries.updateDescription(request)
         if(request.days != null) queries.updateDate(request)
         if(request.status == Status.COMPLETED) queries.updateIsCompleted(request)
     }

@@ -8,6 +8,7 @@ import `in`.porter.taskbask.domain.utils.TaskUtils
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import java.time.Instant
+import java.util.*
 import javax.inject.Inject
 
 class TaskQueries @Inject constructor(
@@ -17,6 +18,7 @@ class TaskQueries @Inject constructor(
 
     suspend fun createTask(request: CreateTaskRequestDomain) = transaction {
         TaskTable.insert{
+            it[uuid] = UUID.randomUUID().hashCode()
             it[title] = request.title
             it[description] = request.description
             it[completionTime] = request.timestamp!!.toLong()

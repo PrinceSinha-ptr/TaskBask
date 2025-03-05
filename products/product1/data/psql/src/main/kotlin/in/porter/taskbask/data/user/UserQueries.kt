@@ -4,11 +4,13 @@ import `in`.porter.taskbask.domain.entites.internal.*
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import javax.inject.Inject
+import java.util.UUID
 
 class UserQueries @Inject constructor( ) {
 
     suspend fun createUser(request: CreateUserRequestDomain) = transaction {
         UserTable.insert {
+            it[uuid] = UUID.randomUUID().hashCode()
             it[email] = request.email
             it[name] = request.name
             it[password] = request.password

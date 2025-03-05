@@ -34,6 +34,10 @@ constructor(
                 throw TaskBaskException("Email or Password is wrong" , HttpStatusCode.Forbidden)
             }
 
+            if (request.description.isNullOrEmpty() || request.description == null || request.description == "" || request.description == "null") {
+                println("Description is either null or empty")
+            }
+
             taskRepos.update(request)
             val updatedRequest = GetTaskRequestDomain(request.email, request.password,request.title, userId)
             val resp = taskRepos.get(updatedRequest)

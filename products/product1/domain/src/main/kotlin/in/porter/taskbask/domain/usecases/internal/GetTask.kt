@@ -31,13 +31,26 @@ class GetTask @Inject constructor(
 
             val cacheResponse = cacheRepo.getTask(request)
 
-            if(!(cacheResponse.isEmpty())){
+            if((request.title != ""  && !(cacheResponse.isEmpty()))){
+                return cacheResponse
+            }
+
+            if(request.title == "" && (cacheResponse.size == cacheRepo.getSize(request.email))){
                 return cacheResponse
             }
 
             val updatedRequest = request.copy(userId = id)
-            return taskRepos.get(updatedRequest)
+            val resp =  taskRepos.get(updatedRequest)
 
+
+            if(request.title != "" && resp.isEmpty())
+                throw TaskBaskException("No such task with title ${request.title} for user with email ${request.email}" , HttpStatusCode.NotFound)
+
+            println(resp)
+            if(request.title != "") cacheRepo.cacheTask(request.email , resp[0])
+            else cacheRepo.cacheAllTask(request.email , resp)
+
+            return resp
         } catch (e: TaskBaskException) {
             throw e
         } catch (e: Exception) {

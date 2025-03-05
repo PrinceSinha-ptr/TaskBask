@@ -44,6 +44,7 @@ class CreateTask @Inject constructor(
                 throw TaskBaskException("Email or Password is wrong" , HttpStatusCode.Forbidden)
             }
             cacheRepo.cacheTask(request.email , cacheRequest)
+            print(updatedRequest)
 
 
             taskRepos.create(updatedRequest)

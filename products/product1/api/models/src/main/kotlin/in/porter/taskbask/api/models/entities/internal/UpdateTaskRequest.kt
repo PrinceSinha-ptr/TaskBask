@@ -6,7 +6,7 @@ data class UpdateTaskRequest (
     val title: String,
     val email: String,
     val password: String,
-    val description: String? = null,
+    val description: String = "",
     var status: TaskStatus = TaskStatus.PENDING,
     val days: Int? = null
 )
