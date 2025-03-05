@@ -6,7 +6,7 @@ import org.jetbrains.exposed.sql.Table
 import `in`.porter.taskbask.data.user.UserTable
 
 object TaskTable: Table() {
-    val uuid = integer("uuid").autoIncrement()
+    val uuid = integer("uuid")
     val userId = integer("userId").references(UserTable.uuid, onDelete = ReferenceOption.CASCADE)
     val title = varchar("title" , 255).uniqueIndex()
     val description = text("description")
